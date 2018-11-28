@@ -40,7 +40,7 @@ export default class Jumbo extends React.Component {
                                new a({entity: null, "style":OrderedSet(["CUSTOM_FONT_SIZE_20px"]) }),
                                new a({entity: null, "style":OrderedSet(["CUSTOM_FONT_SIZE_20px"]) }),
                             ])
-      // setEditorState( updateCharacterListOfBlock(editorState, this.props.block, text) )
+    
       setEditorState( updateCharacterListOfBlock(editorState, this.props.block, text, characterList) )      
       
     })

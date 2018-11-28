@@ -1,9 +1,6 @@
 
 import React from 'react';
 
-
-// IMAGE TOOLTIP
-
 export function imageFill(){
   return <svg id='icon-image-fill' width="20px" height="20px" viewBox='0 0 36 32'>
             <path fill="#fff" d='M4 26h28v3h-28v-3zM0 2h36v21h-36v-21z' />
@@ -28,7 +25,6 @@ export function imageWide(){
          </svg>
 }
 
-// INLINE TOOLTIP
 
 export function image(){
   return  <svg className="icon-photo" width="20px" height="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +77,6 @@ export function embed() {
   </svg>
 }
 
-// TEXT TOOLTIP
 
 export function fontColor() {
   return <svg className="icon-fontcolor" width="22px" height="22px" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">

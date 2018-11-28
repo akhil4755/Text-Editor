@@ -1,7 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import DanteTooltipColor from './color'
-//import DanteTooltipList from './select'
 
 import {
   getVisibleSelectionRect,
@@ -76,7 +74,6 @@ class DanteTooltip extends React.Component {
 
     let currentBlock = getCurrentBlock(this.props.editorState)
     let blockType = currentBlock.getType()
-    // display tooltip only for unstyled
 
     if (this.props.configTooltip.selectionElements.indexOf(blockType) < 0) {
       this.hide()
@@ -102,7 +99,6 @@ class DanteTooltip extends React.Component {
 
     let parent = ReactDOM.findDOMNode(this.props.editor)
 
-    // hide if selected node is not in editor
     if (!this.isDescendant(parent, nativeSelection.anchorNode)) {
       this.hide()
       return
@@ -110,7 +106,6 @@ class DanteTooltip extends React.Component {
 
     const relativeParent = getRelativeParent(this.refs.dante_menu.parentElement);
     const toolbarHeight = this.refs.dante_menu.clientHeight;
-    //const toolbarWidth = this.refs.dante_menu.clientWidth;
     const relativeRect = (relativeParent || document.body).getBoundingClientRect();
     const selectionRect = getVisibleSelectionRect(window);
 
@@ -118,16 +113,11 @@ class DanteTooltip extends React.Component {
       return
 
     let top = (selectionRect.top - relativeRect.top) - toolbarHeight
-    //let left = selectionBoundary.left + selectionBoundary.width / 2 - padd
-    let left = (selectionRect.left - relativeRect.left + (selectionRect.width/2) ) - padd // - (toolbarWidth / 2 ) + 10
-
-    //let left = (selectionRect.left - relativeRect.left) + (selectionRect.width / 2)
-
+    let left = (selectionRect.left - relativeRect.left + (selectionRect.width/2) ) - padd 
     if (!top || !left) {
       return
     }
 
-    // console.log "SET SHOW FOR TOOLTIP INSERT MENU"
     return this.setState({
       show: true,
       position: {
@@ -148,7 +138,6 @@ class DanteTooltip extends React.Component {
   _clickBlockInlineStyle =(ev, style)=> {
     let k = Object.keys(style)[0]
     this.props.onChange(this.props.styles[k].toggle(this.props.editorState, style[k]))
-    //this.props.onChange(RichUtils.toggleInlineStyle(this.props.editorState, style))
     return setTimeout(() => {
       return this.relocate()
     }, 0)
@@ -218,7 +207,6 @@ class DanteTooltip extends React.Component {
     }
 
     let entityKey = Entity.create('LINK', 'MUTABLE', opts)
-    //contentState.createEntity('LINK', 'MUTABLE', opts)
 
     if (selection.isCollapsed()) {
       console.log("COLLAPSED SKIPPING LINK")
@@ -312,46 +300,7 @@ class DanteTooltip extends React.Component {
         <ul className="dante-menu-buttons" style={this.state.menu_style}>
 
           {
-            /*
-          }
-          <DanteTooltipList
-            editorState={ this.props.editorState }
-            styles={this.props.styles}
-            value={'Normal'}
-            style_type="block"
-            values={['unstyled', 'header-one', 'header-two']}
-            items={['Normal', 'Title', 'Subtitle']}
-            handleClick={(ev, style)=>{
-              const types = {Normal: 'unstyled', Title: 'header-one', Subtitle: 'header-two' }
-
-              this._clickBlockHandler(ev, types[style.block])
-            }
-          }
-          />
-
-          <DanteTooltipList
-            editorState={ this.props.editorState }
-            styles={this.props.styles}
-            value={'Arial'}
-            style_type="fontFamily"
-            items={['Arial', 'Georgia', 'Helvetica',
-                    'Tahoma', 'Times', 'Verdana']}
-            handleClick={this._clickBlockInlineStyle}
-          />
-
-          <DanteTooltipList
-            editorState={ this.props.editorState }
-            items={
-              [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-                   22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 44, 48,
-                   52, 56, 60].map( (n)=> { return `${n}px` } )
-            }
-            handleClick={this._clickBlockInlineStyle}
-            value={"12px"}
-            styles={this.props.styles}
-            style_type="fontSize"
-          />
-          */}
+           }
 
           { this.props.widget_options.block_types.map( (item, i) => {
               switch (item.type) {
@@ -376,19 +325,6 @@ class DanteTooltip extends React.Component {
                             handleClick={ this._clickInlineHandler }
                           />
                   break;
-                
-                // case "color":
-                //   return <DanteTooltipColor
-                //             key={ i }
-                //             styles={this.props.styles}
-                //             editorState={ this.props.editorState }
-                //             enableLinkMode={ this._enableLinkMode }
-                //             value={'#000'}
-                //             style_type="color"
-                //             handleClick={this._clickBlockInlineStyle}
-                //             show={this.state.show}
-                //           />
-                //   break
 
                 case "separator":
                   return <DanteMenuDivider key={ i }/>

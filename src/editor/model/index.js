@@ -5,17 +5,8 @@ import { Map } from 'immutable';
 import { EditorState, ContentBlock, genKey } from 'draft-js';
 
 
-/*
-Used from [react-rte](https://github.com/brijeshb42/medium-draft)
-by [brijeshb42](https://github.com/brijeshb42/medium-draft)
-*/
-
-/*
-Returns default block-level metadata for various block type. Empty object otherwise.
-*/
 export const getDefaultBlockData = (blockType, initialData = {}) => {
   switch (blockType) {
-    //case Block.TODO: return { checked: false };
     default: return initialData;
   }
 };
@@ -32,9 +23,7 @@ export const getNode = (root=window) => {
   return t
 }
 
-/*
-Get currentBlock in the editorState.
-*/
+
 export const getCurrentBlock = (editorState) => {
   const selectionState = editorState.getSelection();
   const contentState = editorState.getCurrentContent();
@@ -42,10 +31,7 @@ export const getCurrentBlock = (editorState) => {
   return block;
 };
 
-/*
-Adds a new block (currently replaces an empty block) at the current cursor position
-of the given `newType`.
-*/
+
 export const addNewBlock = (editorState, newType = "unstyled", initialData = {}) => {
   const selectionState = editorState.getSelection();
   if (!selectionState.isCollapsed()) {
@@ -76,9 +62,6 @@ export const addNewBlock = (editorState, newType = "unstyled", initialData = {})
 };
 
 
-/*
-Changes the block type of the current block.
-*/
 export const resetBlockWithType = (editorState, newType = "unstyled", data={}) => {
   const contentState = editorState.getCurrentContent();
   const selectionState = editorState.getSelection();
@@ -104,9 +87,6 @@ export const resetBlockWithType = (editorState, newType = "unstyled", data={}) =
 };
 
 
-/*
-Update block-level metadata of the given `block` to the `newData`/
-*/
 export const updateDataOfBlock = (editorState, block, newData) => {
   const contentState = editorState.getCurrentContent();
   const newBlock = block.merge({
@@ -116,7 +96,6 @@ export const updateDataOfBlock = (editorState, block, newData) => {
     blockMap: contentState.getBlockMap().set(block.getKey(), newBlock),
   });
   return EditorState.push(editorState, newContentState, 'change-block-type');
-  // return editorState;
 };
 
 export const updateTextOfBlock = (editorState, block, text) => {
@@ -129,7 +108,6 @@ export const updateTextOfBlock = (editorState, block, text) => {
   });
 
   return EditorState.push(editorState, newContentState, 'replace-text');
-  // return editorState;
 };
 
 export const updateCharacterListOfBlock = (editorState, block, text, charList) => {
@@ -145,16 +123,9 @@ export const updateCharacterListOfBlock = (editorState, block, text, charList) =
   });
 
   return EditorState.push(editorState, newContentState, 'replace-text');
-  // return editorState;
 };
 
-// const BEFORE = -1;
-// const AFTER = 1;
 
-/*
-Used from [react-rte](https://github.com/sstur/react-rte/blob/master/src/lib/insertBlockAfter.js)
-by [sstur](https://github.com/sstur)
-*/
 export const addNewBlockAt = (
     editorState,
     pivotBlockKey,

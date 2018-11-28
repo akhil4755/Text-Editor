@@ -46,8 +46,6 @@ export default class CodeBlock extends React.Component {
         <div>
           
           <span className="dante-code-syntax">
-            {/*this.props.blockProps.data.get('syntax')*/}
-
             {
               this.renderSelect() ?
               <Select options={this.languages} 
@@ -85,7 +83,6 @@ export const CodeBlockConfig = (options={})=>{
     handleEnterWithText(ctx, block) {
       const { editorState } = ctx.state
       return ctx.onChange(RichUtils.insertSoftNewline(editorState))
-      //return ctx.onChange(addNewBlockAt(editorState, block.getKey()))
     },
     widget_options: {
       

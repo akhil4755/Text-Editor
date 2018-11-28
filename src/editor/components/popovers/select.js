@@ -4,14 +4,12 @@ import React from 'react'
 export default class DanteTooltipList extends React.Component {
 
   logChange =(val)=> {
-    //console.log("Selected: " + JSON.stringify(val));
   }
 
   promptForLink =(ev)=> {
     let selection = this.props.editorState.getSelection()
     if (!selection.isCollapsed()) {
-      //ev.preventDefault()
-      //return this.props.enableLinkMode(ev)
+  
     }
   }
 
@@ -30,10 +28,7 @@ export default class DanteTooltipList extends React.Component {
   }
 
   render() {
-    //console.log(`${this.currentValue()} vs ${this.props.value}`)
     const v = this.currentValue() || this.props.value
-    //console.log(`this should be ${v}`)
-    //let v = this.props.value
 
     return (
       <li className="dante-menu-button visible-overflow" 
@@ -79,7 +74,6 @@ class DropDown extends React.Component {
     return (
       <div className={`dropdown ${this.state.open ? 'open' : ''}`} >
         <button className="btn btn-default dropdown-toggle" 
-                //onMouseDown={this.toggle}
                 type="button" id="dropdownMenu1" 
                 data-toggle="dropdown" 
                 aria-haspopup="true" 

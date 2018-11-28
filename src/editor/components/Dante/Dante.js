@@ -2,16 +2,9 @@
 import React from 'react';
 import DanteEditor from "../core/editor.js"
 import '../../styles/dante.scss';
-import { Map, fromJS, merge } from 'immutable'
-import {DanteImagePopoverConfig} from '../popovers/image.js'
-import {DanteAnchorPopoverConfig} from '../popovers/link.js'
-import {DanteInlineTooltipConfig} from '../popovers/addButton.js' //'Dante2/es/components/popovers/addButton.js'
-import {DanteTooltipConfig} from '../popovers/toolTip.js' //'Dante2/es/components/popovers/toolTip.js'
-import {ImageBlockConfig} from '../blocks/image.js'
-import {EmbedBlockConfig} from '../blocks/embed.js'
-import {VideoBlockConfig} from '../blocks/video.js'
-import {PlaceholderBlockConfig} from '../blocks/placeholder.js'
-import {CodeBlockConfig} from '../blocks/code.js'
+
+import {DanteTooltipConfig} from '../popovers/toolTip.js'
+
 import Link from '../decorators/link'
 import {PrismDraftDecorator} from '../decorators/prism'
 
@@ -21,18 +14,14 @@ import findEntities from '../../utils/find_entities'
 
 import MultiDecorator from 'draft-js-multidecorators'
 
-// custom blocks
-import DividerBlock from '../blocks/divider'
 import PropTypes from 'prop-types'
 
-// component implementation
 class Dante extends React.Component {
 
   constructor(props) {
     super(props)
   }
 
-  // componentDidMount() { }
 
   toggleEditable = () => {
     this.setState({ read_only: !this.state.read_only })
@@ -51,11 +40,8 @@ class Dante extends React.Component {
 }
 
 Dante.propTypes = {
-  /** Editor content, it expects a null or a draft's EditorContent. */
   content: PropTypes.string,
   read_only: PropTypes.boolean,
-  //spellcheck: PropTypes.boolean,
-  //title_placeholder: PropTypes.string,
   body_placeholder: PropTypes.string,
 
   xhr: PropTypes.shape({
@@ -80,24 +66,6 @@ Dante.propTypes = {
 
   continuousBlocks: PropTypes.arrayOf(PropTypes.string),
 
-  /*key_commands: PropTypes.shape({
-      "alt-shift":  PropTypes.arrayOf(PropTypes.shape({
-                     key: PropTypes.string.isRequired,
-                     name: PropTypes.string.isRequired,
-                   }),
-      "alt-cmd": PropTypes.arrayOf(PropTypes.shape({
-                       key: PropTypes.string.isRequired,
-                       name: PropTypes.string.isRequired,
-                     }),
-      "cmd": PropTypes.arrayOf(PropTypes.shape({
-               key: PropTypes.string.isRequired,
-               name: PropTypes.string.isRequired,
-             })
-  })*/
-
-  /*character_convert_mapping: PropTypes.shape({
-      '> ': "blockquote"
-  })*/
 }
 
 Dante.defaultProps = {
@@ -179,19 +147,9 @@ Dante.defaultProps = {
   },
 
   tooltips: [
-    DanteImagePopoverConfig(),
-    DanteAnchorPopoverConfig(),
-    DanteInlineTooltipConfig(),
     DanteTooltipConfig(),
   ],
   
-  widgets: [
-    ImageBlockConfig(),
-    EmbedBlockConfig(),
-    VideoBlockConfig(),
-    PlaceholderBlockConfig(),
-    //CodeBlockConfig()
-  ]
 
 }
 

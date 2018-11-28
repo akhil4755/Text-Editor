@@ -1,5 +1,4 @@
 
-//TODO: what the f*ck is happening here? ;-;
 const findEntities = (entityType, instance, contentBlock, callback) => {
   return contentBlock.findEntityRanges((function(_this) {
     return function(character) {

@@ -20,10 +20,8 @@ export default class DanteTooltipColor extends React.Component {
   }
 
   toggle =(ev)=> {
-    // let selection = this.props.editorState.getSelection()
-    // prevent unselection of selection
     ev.preventDefault()
-    this.setState({open: true }) //!this.state.open})
+    this.setState({open: true })
   }
 
   handleClick =(e, item)=>{
@@ -47,9 +45,7 @@ export default class DanteTooltipColor extends React.Component {
   }
 
   renderColor =()=>{
-    //console.log(`${this.currentValue()} vs ${this.props.value}`)
     const v = this.currentValue() || this.props.value
-    //console.log(`this should be ${v}`)
 
     if(this.state.open){
       return (

@@ -1,7 +1,6 @@
 
 import React from 'react';
 
-// INLINE TOOLTIP
 
 const style = {
   position: "fixed",
@@ -16,8 +15,7 @@ const style = {
 export default function(){
 
   const startDrag = (event, data) => {
-    event.dataTransfer.dropEffect = 'move'; // eslint-disable-line no-param-reassign
-    // declare data and give info that its an existing key and a block needs to be moved
+    event.dataTransfer.dropEffect = 'move';
     event.dataTransfer.setData('text', JSON.stringify(data));
   }
 

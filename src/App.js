@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div style={{padding : '20%' }}>
         
-          <Dante  />
+          <Dante widgets={[]} />
 
       </div>
     );

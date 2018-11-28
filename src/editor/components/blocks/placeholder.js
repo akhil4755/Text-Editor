@@ -15,12 +15,8 @@ export default class PlaceholderBlock extends React.Component {
   }
 
   placeholderText =()=> {
-    //if (this.state.enabled) {
-    //  return ""
-    //}
     return this.props.blockProps.data.toJS().placeholder || this.placeholderFromProps() || this.defaultText()
   }
-  //if @.props.blockProps.data then @.props.blockProps.data.placeholder else @defaultText()
 
 
   placeholderFromProps =()=> {
@@ -91,6 +87,3 @@ export const PlaceholderBlockConfig = (options={})=>{
 
   return Object.assign(config, options)
 }
-
-
-

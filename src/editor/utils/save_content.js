@@ -80,9 +80,8 @@ class SaveBehavior {
   }
 
   checkforStore(content){
-    // ENTER DATA STORE
     let isChanged = !Immutable.is(Immutable.fromJS(this.editorContent), Immutable.fromJS(content))
-    // console.log("CONTENT CHANGED:", isChanged)
+
 
     if (!isChanged) { return }
 
@@ -91,14 +90,12 @@ class SaveBehavior {
 
   save(content){
 
-    // use save handler from config if exists
     if (this.config.data_storage.save_handler){
       this.config.data_storage.save_handler(this, content)
       return 
     }
 
     if (this.config.xhr.before_handler) { this.config.xhr.before_handler() }
-    // console.log "SAVING TO: #{@getMethod()} #{@getUrl()}"
     return axios({
       method: this.getMethod(),
       url: this.getUrl(),
@@ -111,7 +108,6 @@ class SaveBehavior {
       headers: this.getHeaders(),
     })
     .then(result=> {
-      // console.log "STORING CONTENT", result
       if (this.config.data_storage.success_handler) { 
         return this.config.data_storage.success_handler(result) 
       }
@@ -121,7 +117,6 @@ class SaveBehavior {
     }
     )
     .catch(error=> {
-      // console.log("ERROR: got error saving content at #{@config.data_storage.url} - #{error}")
       if (this.config.data_storage.failure_handler) { 
         return this.config.data_storage.failure_handler(error) 
       }

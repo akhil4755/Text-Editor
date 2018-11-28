@@ -1,12 +1,5 @@
-/*
- * Copyright (c) 2016, Globo.com (https://github.com/globocom)
- *
- * License: MIT
- */
 
 import React, {Component} from "react";
-//import classNames from "classnames";
-//import icons from "../../icons";
 
 export default class BlockInput extends Component {
 
@@ -21,7 +14,6 @@ export default class BlockInput extends Component {
   }
 
   handleChangeEv =(ev, field)=>{
-    //ev.preventDefault()
     let data = {[field]: ev.currentTarget.value}
     console.log(`updating ${JSON.stringify(data)}`)
     this.props.handleOnChange(data)
@@ -45,8 +37,7 @@ export default class BlockInput extends Component {
                 ref="input"
                 defaultValue={this.props.value}
                 onBlur={(ev)=>{this.handleChangeEv(ev, this.props.name) ; this.setState({edit: false})}}
-                //value={this.props.value}
-                //onChange={(ev)=>{this.handleChangeEv(ev, this.props.name)}}
+  
               />
           : <span> 
               {this.props.value} 

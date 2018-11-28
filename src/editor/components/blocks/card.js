@@ -21,7 +21,6 @@ export default class CardBlock extends React.Component {
     this.setState({image: image}, this.updateData)
   }
 
-  // will update block state
   updateData = ()=> {
     let { blockProps } = this.props
     let { block } = this.props
@@ -92,7 +91,6 @@ class CardImage extends React.Component {
   clickOnFileUpload =(ev)=> {
     ev.preventDefault()
     this.refs.fileInput.click()
-    //ev.preventDefault()
   }
 
   handleFileInput =(e)=> {
@@ -110,7 +108,6 @@ class CardImage extends React.Component {
 
     this.props.setImage(opts.url)
     this.handleUpload()
-    //return this.props.onChange(addNewBlock(this.props.editorState, 'image', opts))
   }
 
   getUploadHeaders =()=>  {
